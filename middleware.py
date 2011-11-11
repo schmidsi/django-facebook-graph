@@ -98,7 +98,7 @@ class Redirect2AppDataMiddleware(object):
             # only execute first time (Facebook will POST the tab with signed_request parameter)
             if request.method == 'POST' and request.POST.has_key('signed_request'):
                 target_url = request.session['facebook']['signed_request']['app_data']
-                return redirect(target_url)
+                return redirect('/raiffeisen-page-cms%s' % target_url)
             else:
                 return None
         except KeyError:
